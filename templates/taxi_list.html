@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<h1 class="mt-5">Taxis</h1>
+<a href="{{ url_for('taxi_bp.add_taxi') }}" class="btn btn-primary mb-3">Add Taxi</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Immatriculation</th>
+            <th>Total KM</th>
+            <th>Next Maintenance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for taxi in taxis %}
+        <tr>
+            <td>{{ taxi.number }}</td>
+            <td>{{ taxi.immatriculation }}</td>
+            <td>{{ taxi.total_km }}</td>
+            <td>{{ taxi.next_maintenance }}</td>
+            <td>
+                <a href="{{ url_for('taxi_bp.get_taxi', number=taxi.number) }}" class="btn btn-info">Details</a>
+                <a href="{{ url_for('taxi_bp.edit_taxi', number=taxi.number) }}" class="btn btn-warning">Edit</a>
+                <form action="{{ url_for('taxi_bp.delete_taxi', number=taxi.number) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mt-5">Driver Details</h1>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Name:</strong> {{ driver.name }}</li>
+    <li class="list-group-item"><strong>ID:</strong> {{ driver.id }}</li>
+    <li class="list-group-item"><strong>License ID:</strong> {{ driver.license_id }}</li>
+    <li class="list-group-item"><strong>Associated Taxi:</strong> {{ driver.associated_taxi }}</li>
+</ul>
+
+{% if driver.associated_taxi %}
+<h2 class="mt-5">Taxi Details</h2>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Number:</strong> {{ taxi.number }}</li>
+    <li class="list-group-item"><strong>Immatriculation:</strong> {{ taxi.immatriculation }}</li>
+    <li class="list-group-item"><strong>Total KM:</strong> {{ taxi.total_km }}</li>
+    <li class="list-group-item"><strong>Next Maintenance:</strong> {{ taxi.next_maintenance }}</li>
+</ul>
+
+{% endif %}
+<a href="{{ url_for('driver_bp.get_drivers') }}" class="btn btn-primary mt-3">Back to Drivers</a>
+{% endblock %}

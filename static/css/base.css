@@ -1,0 +1,36 @@
+/* Custom CSS to enhance the base Bootstrap styling */
+
+/* General body styling */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f8f9fa;
+    margin-top: 20px;
+}
+
+/* Navbar customization */
+.navbar {
+    background-color: #007bff; /* Change navbar color */
+}
+
+.navbar-brand {
+    color: #070707 !important; /* Change brand text color */
+}
+
+.nav-link {
+    color: #0d0d0e !important; /* Change navigation link color */
+}
+
+.nav-link:hover {
+    color: #080808 !important; /* Change navigation link hover color */
+}
+
+/* Alert customization */
+.alert {
+    margin-bottom: 0; /* Remove margin from the bottom of alerts */
+    border-radius: 0; /* Optional: removes border radius for a more squared look */
+}
+
+/* Container customization */
+.container {
+    padding-top: 20px; /* Add padding to the top of the container */
+}

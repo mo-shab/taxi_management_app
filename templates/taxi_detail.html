@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mt-5">Taxi Details</h1>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Number:</strong> {{ taxi.number }}</li>
+    <li class="list-group-item"><strong>Immatriculation:</strong> {{ taxi.immatriculation }}</li>
+    <li class="list-group-item"><strong>Total KM:</strong> {{ taxi.total_km }}</li>
+    <li class="list-group-item"><strong>Next Maintenance:</strong> {{ taxi.next_maintenance }}</li>
+</ul>
+
+<h2 class="mt-5">Add Daily Kilometers</h2>
+<form method="POST" action="{{ url_for('taxi_bp.get_taxi', number=taxi.number) }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.km.label(class="form-label") }}
+        {{ form.km(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+</form>
+
+<a href="{{ url_for('taxi_bp.get_taxis') }}" class="btn btn-primary mt-3">Back to Taxis</a>
+{% endblock %}

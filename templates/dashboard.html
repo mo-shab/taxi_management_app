@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if taxis %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Taxi Number</th>
+                <th>Immatriculation</th>
+                <th>Total KM</th>
+                <th>Next Maintenance</th>
+                <th>Daily Logs</th>
+                <th>View details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for taxi in taxis %}
+            <tr>
+                <td>{{ taxi.number }}</td>
+                <td>{{ taxi.immatriculation }}</td>
+                <td>{{ taxi.total_km }}</td>
+                <td>{{ taxi.next_maintenance }}</td>
+                <td>
+                    <ul>
+                        {% for log in taxi.daily_km_log %}
+                        <li>{{ log.date }}: {{ log.km }} km</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td><a href="{{ url_for('taxi_bp.get_taxi', number=taxi.number) }}" class="btn btn-info">Details</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No taxis found.</p>
+{% endif %}
+
+<a href="{{ url_for('taxi_bp.get_taxis') }}" class="btn btn-primary">View Taxis</a><br>
+{% endblock %}

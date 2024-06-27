@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<h1 class="mt-5">{% if form.number.data %}Edit Taxi{% else %}Add Taxi{% endif %}</h1>
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.number.label(class="form-label") }}
+        {{ form.number(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.immatriculation.label(class="form-label") }}
+        {{ form.immatriculation(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.total_km.label(class="form-label") }}
+        {{ form.total_km(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.next_maintenance.label(class="form-label") }}
+        {{ form.next_maintenance(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">{% if form.number.data %}Update Taxi{% else %}Add Taxi{% endif %}</button>
+</form></div>
+{% endblock %}
